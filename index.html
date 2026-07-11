@@ -330,4 +330,39 @@
             const d = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
             const h = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const m = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.f
+            const s = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d < 10 ? "0" + d : d;
+            document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
+            document.getElementById("minutes").innerText = m < 10 ? "0" + m : m;
+            document.getElementById("seconds").innerText = s < 10 ? "0" + s : s;
+        }, 1000);
+
+        function copyText(elementId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert("Nomor rekening berhasil disalin: " + textToCopy);
+            }).catch(err => {
+                console.error('Gagal menyalin teks: ', err);
+            });
+        }
+
+        function sendRSVP() {
+            const name = document.getElementById('guest-name').value;
+            const status = document.getElementById('attendance').value;
+            const phoneNumber = "6285805611643";
+
+            if(!name || !status) {
+                alert("Mohon isi nama dan konfirmasi kehadiran Anda.");
+                return;
+            }
+
+            const message = `Halo, saya ${name}. Ingin mengonfirmasi bahwa saya *${status}* di acara pernikahan kalian. Terima kasih!`;
+            const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+</body>
+</html>
+
+

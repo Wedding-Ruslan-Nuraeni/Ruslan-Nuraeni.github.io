@@ -14,17 +14,41 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        body { font-family: 'Montserrat', sans-serif; background-color: #fcfbf7; color: #4a4a4a; overflow-x: hidden; }
-        .hero { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070') no-repeat center center/cover; height: 100vh; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            /* 1. FOTO BACKGROUND SELURUH WEB (Ganti URL di bawah ini dengan foto Anda) */
+            background: linear-gradient(rgba(252, 251, 247, 0.92), rgba(252, 251, 247, 0.92)), url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000') no-repeat center center fixed;
+            background-size: cover;
+            color: #4a4a4a; 
+            overflow-x: hidden; 
+        }
+        
+        /* 2. FOTO BACKGROUND HALAMAN UTAMA / HERO (Ganti URL di bawah ini dengan foto Prewedding Utama Anda) */
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070') no-repeat center center/cover; 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: white; 
+            text-align: center; 
+        }
+        
         .romantic-font { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: #d4af37; }
         .section-padding { padding: 80px 0; }
         .btn-custom { background-color: #c5a880; color: white; border: none; padding: 10px 25px; border-radius: 30px; transition: 0.3s; text-decoration: none; display: inline-block; }
         .btn-custom:hover { background-color: #a3875f; color: white; transform: scale(1.05); }
+        
         .countdown-box { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; min-width: 80px; transition: 0.3s; }
         .countdown-box:hover { transform: translateY(-5px); }
         .countdown-box span { font-size: 2rem; font-weight: 600; display: block; color: #c5a880; }
+        
         .audio-control { position: fixed; bottom: 20px; right: 20px; z-index: 999; background: #c5a880; color: white; border: none; width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.3s; }
         .audio-control:hover { transform: scale(1.1); }
+        
+        /* Modifikasi Transparansi Kontainer agar Foto Latar Belakang Terlihat Elegan */
+        .bg-glass { background: rgba(255, 255, 255, 0.65) !important; backdrop-filter: blur(3px); }
+        .card { background: rgba(255, 255, 255, 0.85) !important; backdrop-filter: blur(5px); }
         
         /* Gaya Timeline Kisah Cinta */
         .timeline { position: relative; max-width: 800px; margin: 0 auto; padding: 20px 0; }
@@ -35,7 +59,7 @@
         .right { left: 50%; text-align: left; }
         .left::after { right: -8px; }
         .right::after { left: -8px; }
-        .timeline-content { padding: 20px; background-color: white; position: relative; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+        .timeline-content { padding: 20px; background-color: rgba(255, 255, 255, 0.85); position: relative; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; backdrop-filter: blur(5px); }
         .timeline-content:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
         
         /* Animasi Efek Hover untuk Foto Galeri */
@@ -100,7 +124,7 @@
     </section>
 
     <!-- Section Galeri Foto Tambahan -->
-    <section class="section-padding bg-light text-center">
+    <section class="section-padding text-center bg-glass">
         <div class="container">
             <h2 class="romantic-font mb-4" style="font-size: 3.5rem;" data-aos="fade-up">Galeri Prewedding</h2>
             <p class="text-muted mb-5" data-aos="fade-up">Momen indah kebersamaan kami</p>
@@ -123,7 +147,7 @@
     </section>
 
     <!-- 3. Kisah Cinta (Love Journey) -->
-    <section class="section-padding bg-white">
+    <section class="section-padding">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="romantic-font" style="font-size: 3.5rem;">Kisah Cinta Kami</h2>
@@ -159,7 +183,7 @@
     </section>
 
     <!-- 4. Detail Acara & Peta -->
-    <section class="section-padding bg-light text-center">
+    <section class="section-padding text-center bg-glass">
         <div class="container">
             <h2 class="romantic-font mb-5" style="font-size: 3.5rem;" data-aos="fade-up">Waktu & Tempat Acara</h2>
             <div class="row g-4 justify-content-center">
@@ -167,7 +191,7 @@
                     <div class="card border-0 shadow-sm p-4 h-100">
                         <i class="fas fa-ring fa-3x mb-3 text-muted"></i>
                         <h4>Akad Nikah / Pemberkatan</h4>
-                        <p class="mt-2"><strong>Minggu, 12 Desember 2026</strong><br>Pukul 08.00 - 10.00 WIB</p>
+                        <p class="mt-2"><strong>Minggu, 26 Desember 2026</strong><br>Pukul 08.00 - 10.00 WIB</p>
                         <p class="text-muted">Gedung / Rumah Pernikahan<br>Purwakarta, Jawa Barat</p>
                     </div>
                 </div>
@@ -175,15 +199,13 @@
                     <div class="card border-0 shadow-sm p-4 h-100">
                         <i class="fas fa-utensils fa-3x mb-3 text-muted"></i>
                         <h4>Resepsi Pernikahan</h4>
-                        <p class="mt-2"><strong>Minggu, 12 Desember 2026</strong><br>Pukul 11.00 - selesai</p>
+                        <p class="mt-2"><strong>Minggu, 26 Desember 2026</strong><br>Pukul 11.00 - selesai</p>
                         <p class="text-muted">Gedung / Rumah Pernikahan<br>Purwakarta, Jawa Barat</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Elemen Google Maps dengan Lokasi Baru Anda -->
             <div class="mt-5 shadow rounded overflow-hidden mx-auto" style="max-width: 800px;" data-aos="fade-up">
-                <!-- Peta Menggunakan Titik Koordinat Akurat Sesuai Link Maps Anda -->
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.6337227003444!2d107.4589209!3d-6.5678434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e690e72bd58cf7b%3A0xe6bf624deee409ef!2sKlinik%20Aqma%20Purwakarta!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
             <div class="mt-3" data-aos="fade-up">
@@ -193,14 +215,14 @@
     </section>
 
     <!-- 5. Fitur Amplop Digital / Wedding Gift -->
-    <section class="section-padding bg-white text-center">
+    <section class="section-padding text-center">
         <div class="container" style="max-width: 700px;">
             <h2 class="romantic-font mb-4" style="font-size: 3.5rem;" data-aos="fade-up">Dompet Digital / Kado Digital</h2>
             <p class="text-muted mb-5" data-aos="fade-up">Doa restu Anda adalah karunia terindah. Namun jika ingin memberikan tanda kasih, Anda dapat mengirimkannya melalui rekening berikut:</p>
             
             <div class="row g-3 justify-content-center" data-aos="fade-up" data-aos-duration="1200">
                 <div class="col-md-6">
-                    <div class="card border-0 shadow-sm p-4 text-center bg-light">
+                    <div class="card border-0 shadow-sm p-4 text-center">
                         <i class="fas fa-credit-card fa-2x mb-2 text-muted"></i>
                         <h5>Bank BCA</h5>
                         <p class="mb-1 fw-bold" id="norek1">1234567890</p>
@@ -209,7 +231,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card border-0 shadow-sm p-4 text-center bg-light">
+                    <div class="card border-0 shadow-sm p-4 text-center">
                         <i class="fas fa-wallet fa-2x mb-2 text-muted"></i>
                         <h5>Bank Mandiri</h5>
                         <p class="mb-1 fw-bold" id="norek2">0987654321</p>
@@ -223,21 +245,23 @@
 
     <!-- 6. RSVP Konfirmasi Kehadiran -->
     <section class="section-padding text-center container" style="max-width: 600px;" data-aos="zoom-in">
-        <h2 class="romantic-font mb-4" style="font-size: 3.5rem;">Konfirmasi Kehadiran</h2>
-        <p class="mb-4 text-muted">Bantu kami mempersiapkan jamuan terbaik dengan mengonfirmasi kehadiran Anda.</p>
-        <form id="rsvp-form">
-            <div class="mb-3">
-                <input type="text" id="guest-name" class="form-control" placeholder="Nama Anda" required>
-            </div>
-            <div class="mb-3">
-                <select id="attendance" class="form-select" required>
-                    <option value="">Apakah Anda akan hadir?</option>
-                    <option value="Hadir">Ya, Saya Akan Hadir</option>
-                    <option value="Tidak Hadir">Maaf, Saya Tidak Bisa Hadir</option>
-                </select>
-            </div>
-            <button type="button" class="btn btn-custom w-100" onclick="sendRSVP()">Kirim via WhatsApp</button>
-        </form>
+        <div class="p-4 rounded shadow-sm bg-glass">
+            <h2 class="romantic-font mb-4" style="font-size: 3.5rem;">Konfirmasi Kehadiran</h2>
+            <p class="mb-4 text-muted">Bantu kami mempersiapkan jamuan terbaik dengan mengonfirmasi kehadiran Anda.</p>
+            <form id="rsvp-form">
+                <div class="mb-3">
+                    <input type="text" id="guest-name" class="form-control" placeholder="Nama Anda" required>
+                </div>
+                <div class="mb-3">
+                    <select id="attendance" class="form-select" required>
+                        <option value="">Apakah Anda akan hadir?</option>
+                        <option value="Hadir">Ya, Saya Akan Hadir</option>
+                        <option value="Tidak Hadir">Maaf, Saya Tidak Bisa Hadir</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-custom w-100" onclick="sendRSVP()">Kirim via WhatsApp</button>
+            </form>
+        </div>
     </section>
 
     <!-- Footer -->

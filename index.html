@@ -106,6 +106,27 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
         }
         
+        /* EFEK PARALLAX SCROLLING PADA FOTO MEMPELAI */
+        .parallax-wrap {
+            width: 190px;
+            height: 190px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            border: 4px solid #d4af37;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            position: relative;
+        }
+        .parallax-img {
+            width: 100%;
+            height: 140%; /* Lebih tinggi agar ada ruang gerak parallax */
+            object-fit: cover;
+            position: absolute;
+            top: -20%;
+            left: 0;
+            transition: transform 0.1s ease-out;
+        }
+
         /* GAYA TIMELINE KISAH CINTA ELEGAN DENGAN ALBUM GALERI */
         .timeline { position: relative; max-width: 800px; margin: 0 auto; padding: 20px 0; }
         .timeline::after { content: ''; position: absolute; width: 2px; background-color: #d4af37; top: 0; bottom: 0; left: 50%; margin-left: -1px; }
@@ -180,6 +201,24 @@
             margin-bottom: 12px;
             border-left: 4px solid #d4af37;
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        /* WADAH VIDEO EMBED RESPONSIVE */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         @media screen and (max-width: 600px) {
@@ -260,14 +299,16 @@
         </div>
     </section>
 
-    <!-- 2. Profil Mempelai -->
+    <!-- 2. Profil Mempelai (DENGAN INTEGRASI EFEK PARALLAX SCROLLING) -->
     <section class="section-padding text-center container" id="mempelai">
         <div class="glass-panel mx-auto" style="max-width: 950px;" data-aos="fade-up" data-aos-duration="1000">
             <h2 class="romantic-font mb-5" style="font-size: 3.5rem;">Mempelai Bersanding</h2>
             <div class="row align-items-center">
                 <!-- Pria -->
                 <div class="col-md-5" data-aos="fade-right" data-aos-delay="200">
-                    <img src="https://lh3.googleusercontent.com/u/0/d/1iNdTKBzkdgmp7VJD64SkSFduQyZWP_Hs" class="img-fluid rounded-circle mb-3 shadow" style="width: 190px; height: 190px; object-fit: cover; border: 4px solid #d4af37;" alt="Ruslan">
+                    <div class="parallax-wrap">
+                        <img src="https://lh3.googleusercontent.com/u/0/d/1iNdTKBzkdgmp7VJD64SkSFduQyZWP_Hs" class="parallax-img" id="img-mempelai-pria" alt="Ruslan">
+                    </div>
                     <h3 style="font-weight: 600; color: #1a1a1a; font-size: 1.4rem;">Ruslan Hasanudin, S. Ak</h3>
                     <p class="text-muted small mt-2">Putra dari Bapak Saripudin<br>& Ibu Epong Nurbaetin</p>
                 </div>
@@ -277,7 +318,9 @@
                 </div>
                 <!-- Wanita -->
                 <div class="col-md-5" data-aos="fade-left" data-aos-delay="200">
-                    <img src="https://lh3.googleusercontent.com/u/0/d/1iNdTKBzkdgmp7VJD64SkSFduQyZWP_Hs" class="img-fluid rounded-circle mb-3 shadow" style="width: 190px; height: 190px; object-fit: cover; border: 4px solid #d4af37;" alt="Nuraeni">
+                    <div class="parallax-wrap">
+                        <img src="https://lh3.googleusercontent.com/u/0/d/1iNdTKBzkdgmp7VJD64SkSFduQyZWP_Hs" class="parallax-img" id="img-mempelai-wanita" alt="Nuraeni">
+                    </div>
                     <h3 style="font-weight: 600; color: #1a1a1a; font-size: 1.4rem;">Nuraeni, S. M</h3>
                     <p class="text-muted small mt-2">Putri dari Bapak Sirod<br>& Ibu Lilis</p>
                 </div>
@@ -301,6 +344,18 @@
                 <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="300">
                     <div class="gallery-box"><img src="https://lh3.googleusercontent.com/u/0/d/1iNdTKBzkdgmp7VJD64SkSFduQyZWP_Hs" class="gallery-img" alt="Foto 3"></div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BARU - HALAMAN KHUSUS: GALERI KILAS BALIK VIDEO EMBED -->
+    <section class="section-padding text-center container">
+        <div class="glass-panel mx-auto" style="max-width: 850px;" data-aos="fade-up">
+            <h2 class="romantic-font mb-4" style="font-size: 3.5rem;">Kilas Balik Video</h2>
+            <p class="text-muted mb-4">Simak rangkuman momen sinematik kebersamaan hari bahagia kami</p>
+            <!-- Wadah video interaktif (Ganti bagian URL src dengan link video YouTube/TikTok/Drive Anda sendiri) -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -378,7 +433,7 @@
                 </a>
             </div>
             
-            <div class="mt-5 shadow-sm rounded overflow-hidden mx-auto border" style="max-width: 850px;" data-aos="fade-up">
+            <div class="mt-5 shadow-sm rounded overflow-hidden mx-auto border" style="max-width: 850px;" data-aos="fade-up" id="maps-section">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.6337227003444!2d107.4589209!3d-6.5678434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e690e72bd58cf7b%3A0xe6bf624deee409ef!2sKlinik%20Aqma%20Purwakarta!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" width="100%" height="380" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
             <div class="mt-4" data-aos="fade-up">
@@ -488,19 +543,21 @@
             once: true
         });
 
+        // VARIABEL GLOBAL MUSIK
+        const music = document.getElementById('bg-music');
+        const icon = document.getElementById('music-icon');
+        let isMusicPlaying = false; 
+
         // FITUR 2: LOGIKA BACA PARAMETER NAMA TAMU DARI URL KUSTOM
         function checkGuestName() {
             const urlParams = new URLSearchParams(window.location.search);
             const guestName = urlParams.get('to');
             if (guestName) {
-                // Konversi tanda plus (+) atau %20 menjadi spasi normal
                 document.getElementById('guest-target').innerText = decodeURIComponent(guestName);
-                // Sinkronisasi otomatis ke input form RSVP & Buku Tamu
                 document.getElementById('guest-name').value = decodeURIComponent(guestName);
                 document.getElementById('wishes-name').value = decodeURIComponent(guestName);
             }
         }
-        // Eksekusi otomatis saat web dimuat
         window.addEventListener('DOMContentLoaded', checkGuestName);
 
         // FITUR 1: LOGIKA PENUTUPAN BUKA UNDANGAN (COVER LAYER)
@@ -508,15 +565,66 @@
             document.getElementById('cover-layer').classList.add('hide');
             document.body.classList.remove('cover-active');
             
-            // Putar musik otomatis setelah cover dibuka
-            const music = document.getElementById('bg-music');
-            const icon = document.getElementById('music-icon');
             music.play().then(() => {
                 icon.className = "fas fa-pause";
+                isMusicPlaying = true;
             }).catch(e => {
                 console.log("Autoplay dicegah oleh browser.");
             });
         }
+
+        // FITUR BARU: AUDIO AUTO-FADE (TUTUP TIRAI MUSIK SAAT MENCAPAI AREA PETA/MAPS)
+        window.addEventListener('scroll', function() {
+            const mapsSection = document.getElementById('maps-section');
+            if(!mapsSection || !isMusicPlaying) return;
+
+            const rect = mapsSection.getBoundingClientRect();
+            // Cek apakah area peta masuk ke viewport layar tamu
+            const isVisible = (rect.top <= window.innerHeight && rect.bottom >= 0);
+
+            if (isVisible && !music.paused) {
+                // Perlahan mengecilkan volume tirai musik menjadi 0.1 ketika melihat peta
+                fadeAudio(music, 0.1);
+            } else if (!isVisible && !music.paused) {
+                // Mengembalikan volume musik normal penuh 1.0 ketika menjauh dari peta
+                fadeAudio(music, 1.0);
+            }
+        });
+
+        function fadeAudio(audioEl, targetVolume) {
+            const step = 0.05;
+            const interval = 50; 
+            clearInterval(audioEl.fadeInterval);
+
+            audioEl.fadeInterval = setInterval(() => {
+                if (audioEl.volume < targetVolume) {
+                    audioEl.volume = Math.min(targetVolume, audioEl.volume + step);
+                } else if (audioEl.volume > targetVolume) {
+                    audioEl.volume = Math.max(targetVolume, audioEl.volume - step);
+                }
+
+                if (audioEl.volume === targetVolume) {
+                    clearInterval(audioEl.fadeInterval);
+                }
+            }, interval);
+        }
+
+        // FITUR BARU: GERAKAN EFEK PARALLAX SCROLLING PADA FOTO MEMPELAI PENGANTIN
+        window.addEventListener('scroll', function() {
+            const speed = 0.4;
+            const imgPria = document.getElementById('img-mempelai-pria');
+            const imgWanita = document.getElementById('img-mempelai-wanita');
+            
+            if(imgPria && imgWanita) {
+                const parentPria = imgPria.parentElement.getBoundingClientRect();
+                if(parentPria.top < window.innerHeight && parentPria.bottom > 0) {
+                    // Geser koordinat gambar secara vertikal mengikuti rasio gulir layar
+                    let yOffset = (window.innerHeight - parentPria.top) * speed - 50;
+                    imgPria.style.transform = `translateY(${yOffset}px)`;
+                    imgWanita.style.transform = `translateY(${yOffset}px)`;
+                }
+            }
+        });
 
         // FITUR 4: LOGIKA TAMBAH UCAPAN BUKU TAMU DIGITAL
         function addWish() {
@@ -529,16 +637,11 @@
             }
 
             const container = document.getElementById('wishes-container');
-            
-            // Buat element kartu ucapan baru
             const newCard = document.createElement('div');
             newCard.className = 'guestbook-card';
             newCard.innerHTML = `<h6 class="fw-bold mb-1" style="color: #c5a880;">${nameInput}</h6><p class="small text-muted mb-0">${textInput}</p>`;
             
-            // Taruh ucapan baru di urutan paling atas list
             container.insertBefore(newCard, container.firstChild);
-            
-            // Reset kolom input text saja
             document.getElementById('wishes-text').value = "";
             alert("Terima kasih! Ucapan dan doa restu Anda telah tersimpan.");
         }
@@ -563,9 +666,6 @@
             holder.appendChild(petal);
         }
 
-        const music = document.getElementById('bg-music');
-        const icon = document.getElementById('music-icon');
-
         function startInvitation() {
             const targetPage = document.getElementById('page-ayat');
             targetPage.scrollIntoView({ behavior: 'smooth' });
@@ -575,9 +675,11 @@
             if (music.paused) {
                 music.play();
                 icon.className = "fas fa-pause";
+                isMusicPlaying = true;
             } else {
                 music.pause();
                 icon.className = "fas fa-play";
+                isMusicPlaying = false;
             }
         }
 

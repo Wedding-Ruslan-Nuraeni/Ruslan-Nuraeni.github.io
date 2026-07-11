@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan Ruslan Hasanudin, S.Ak & Nuraeni, S.M</title>
+    <title>Undangan Pernikahan Ruslan Hasanudin, S.Ak. & Nuraeni, S.M.</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Pustaka Animasi AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -31,7 +31,7 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
                         url('https://lh3.googleusercontent.com/u/0/d/1Zh7V2Ev0oGgPZarbIXVAzyEnmWJHtPrn') no-repeat center center/cover;
             z-index: 99999;
             display: flex;
@@ -55,7 +55,7 @@
         }
         
         .hero { 
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                         url('https://lh3.googleusercontent.com/u/0/d/1Zh7V2Ev0oGgPZarbIXVAzyEnmWJHtPrn') no-repeat center center/cover; 
             height: 100vh; 
             display: flex; 
@@ -65,7 +65,37 @@
             text-align: center; 
         }
         
-        .romantic-font { font-family: 'Great Vibes', cursive; font-size: 4.8rem; color: #d4af37; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+        /* GAYA FONT BARU UNTUK NAMA MEMPELAI */
+        .couple-name-container {
+            margin: 20px 0;
+        }
+        .romantic-font { 
+            font-family: 'Great Vibes', cursive; 
+            font-size: 3.5rem; 
+            color: #d4af37; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            line-height: 1.1;
+            display: block;
+        }
+        .degree-font {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: #ffffff;
+            opacity: 0.9;
+            display: block;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        .ampersand {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin: 5px 0;
+            display: block;
+        }
+        
         .section-padding { padding: 90px 0; }
         
         .arabic-text {
@@ -189,7 +219,6 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
-        /* PENINGKATAN BINGKAI DAN KUALITAS KONTRAST VIDEO */
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -209,6 +238,7 @@
             border: 0;
         }
 
+        /* MEDIA QUERY OPTIMASI TAMPILAN HP */
         @media screen and (max-width: 600px) {
             .timeline::after { left: 31px; }
             .timeline-container { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left; }
@@ -216,26 +246,40 @@
             .right { left: 0%; }
             .left { left: 0%; }
             .left .timeline-content { text-align: left; }
-            .romantic-font { font-size: 3.8rem; }
+            
+            /* Penyesuaian ukuran teks di HP */
+            .romantic-font { font-size: 2.8rem; }
+            .degree-font { font-size: 0.95rem; }
+            .ampersand { font-size: 2rem; margin: 2px 0; }
+            
             .arabic-text { font-size: 1.6rem; line-height: 2.8rem; }
+            body { padding-bottom: 60px; }
         }
     </style>
 </head>
 <body class="cover-active">
 
-    <!-- FITUR 1 & 2: COVER LAYER & PERSONALIZED NAMA TAMU -->
+    <!-- PERBAIKAN PADA COVER LAYER -->
     <div id="cover-layer">
         <div class="container p-4">
-            <h5 class="text-uppercase tracking-wide mb-2" style="letter-spacing: 4px;">Walimatul 'Ursy</h5>
-            <h1 class="romantic-font my-3" style="font-size: 4rem;">Ruslan Hasanudin,S.Ak   &   Nuraeni,S. M</h1>
+            <h5 class="text-uppercase tracking-wide mb-2" style="letter-spacing: 4px; font-size: 0.9rem; opacity: 0.9;">Walimatul 'Ursy</h5>
             
-            <div class="my-5 glass-panel mx-auto py-3 text-dark" style="max-width: 450px; background: rgba(255,255,255,0.85) !important;">
-                <p class="mb-1 text-muted small">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
-                <h4 class="fw-bold mb-0" id="guest-target" style="color:#2b2b2b;">Tamu Undangan</h4>
+            <!-- Struktur Nama Mempelai yang Baru & Pas di Layar -->
+            <div class="couple-name-container my-4">
+                <span class="romantic-font">Ruslan Hasanudin</span>
+                <span class="degree-font">S.Ak.</span>
+                <span class="ampersand">&</span>
+                <span class="romantic-font">Nuraeni</span>
+                <span class="degree-font">S.M.</span>
+            </div>
+            
+            <div class="my-4 glass-panel mx-auto py-3 text-dark" style="max-width: 450px; background: rgba(255,255,255,0.88) !important;">
+                <p class="mb-1 text-muted small" style="font-weight: 500;">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+                <h4 class="fw-bold mb-0" id="guest-target" style="color:#2b2b2b; font-size: 1.35rem;">Tamu Undangan</h4>
             </div>
             
             <p class="small fst-italic mb-4" style="opacity: 0.85;">*Tanpa Mengurangi Rasa Hormat, Kami Mengundang Anda Hadir</p>
-            <button class="btn btn-custom px-4 py-2 fs-5" onclick="closeCover()">
+            <button class="btn btn-custom px-4 py-2 fs-6" onclick="closeCover()">
                 <i class="fas fa-envelope-open me-2"></i>Buka Undangan
             </button>
         </div>
@@ -253,32 +297,40 @@
     <!-- 1. Halaman Utama / Hero -->
     <section class="hero" id="home">
         <div class="container">
-            <h5 class="text-uppercase tracking-wide mb-3" data-aos="fade-down" data-aos-duration="1000" style="letter-spacing: 4px;">Walimatul 'Ursy</h5>
-            <h1 class="romantic-font my-4" data-aos="zoom-in" data-aos-duration="1500">Ruslan Hasanudin,S.Ak   &   Nuraeni,S.M</h1>
-            <p class="lead mb-4" data-aos="fade-up" data-aos-duration="1200" style="font-weight: 300;">Kami mengundang Anda untuk merayakan kebahagiaan kami</p>
+            <h5 class="text-uppercase tracking-wide mb-3" data-aos="fade-down" data-aos-duration="1000" style="letter-spacing: 4px; font-size: 0.9rem;">Walimatul 'Ursy</h5>
+            
+            <div class="couple-name-container my-4" data-aos="zoom-in" data-aos-duration="1500">
+                <span class="romantic-font">Ruslan Hasanudin</span>
+                <span class="degree-font">S.Ak.</span>
+                <span class="ampersand">&</span>
+                <span class="romantic-font">Nuraeni</span>
+                <span class="degree-font">S.M.</span>
+            </div>
+
+            <p class="lead mb-4" data-aos="fade-up" data-aos-duration="1200" style="font-weight: 300; font-size: 1rem;">Kami mengundang Anda untuk merayakan kebahagiaan kami</p>
             <div class="d-flex justify-content-center gap-3 my-4" data-aos="fade-up" data-aos-duration="1400">
                 <div class="countdown-box"><span id="days">00</span>Hari</div>
                 <div class="countdown-box"><span id="hours">00</span>Jam</div>
                 <div class="countdown-box"><span id="minutes">00</span>Menit</div>
                 <div class="countdown-box"><span id="seconds">00</span>Detik</div>
             </div>
-            <button class="btn btn-custom mt-3" onclick="startInvitation()" data-aos="fade-up" data-aos-duration="1600">Mulai Jelajah</button>
+            <button class="btn btn-custom mt-2" onclick="startInvitation()" data-aos="fade-up" data-aos-duration="1600">Mulai Jelajah</button>
         </div>
     </section>
 
     <!-- HALAMAN KEDUA: SURAH AR RUM AYAT 21 -->
     <section class="section-padding text-center container" id="page-ayat">
-        <div class="glass-panel mx-auto p-5" style="max-width: 850px;" data-aos="fade-up" data-aos-duration="1200">
+        <div class="glass-panel mx-auto p-4 p-md-5" style="max-width: 850px;" data-aos="fade-up" data-aos-duration="1200">
             <i class="fas fa-heart fa-2x mb-4" style="color: #d4af37;"></i>
-            <h3 class="fw-bold mb-4" style="font-size: 1.3rem; letter-spacing: 2px; color: #c5a880;">QS. AR-RUM: 21</h3>
+            <h3 class="fw-bold mb-4" style="font-size: 1.1rem; letter-spacing: 2px; color: #c5a880;">QS. AR-RUM: 21</h3>
             
-            <p class="arabic-text my-4 px-3 text-center">
-                وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
+            <p class="arabic-text my-4 px-2 text-center">
+                وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ Mِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ Mَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لٰيٰتٍ لِّقَوْمٍ Yَّتَفَكَّرُوْنَ
             </p>
             
             <hr class="mx-auto my-4" style="width: 80px; border-top: 2px solid #d4af37;">
             
-            <p class="fst-italic text-muted px-3 lh-lg small">
+            <p class="fst-italic text-muted px-2 lh-lg small">
                 "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu istri-istri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir."
             </p>
         </div>
@@ -287,26 +339,26 @@
     <!-- 2. Profil Mempelai -->
     <section class="section-padding text-center container" id="mempelai">
         <div class="glass-panel mx-auto" style="max-width: 950px;" data-aos="fade-up" data-aos-duration="1000">
-            <h2 class="romantic-font mb-5" style="font-size: 3.5rem;">Mempelai Bersanding</h2>
+            <h2 class="romantic-font mb-4" style="font-size: 3.5rem;">Mempelai Bersanding</h2>
             <div class="row align-items-center">
                 <!-- Pria -->
                 <div class="col-md-5" data-aos="fade-right" data-aos-delay="200">
                     <div class="parallax-wrap">
                         <img src="https://lh3.googleusercontent.com/u/0/d/1iNdTKBzkdgmp7VJD64SkSFduQyZWP_Hs" class="parallax-img" id="img-mempelai-pria" alt="Ruslan">
                     </div>
-                    <h3 style="font-weight: 600; color: #1a1a1a; font-size: 1.4rem;">Ruslan Hasanudin, S. Ak</h3>
+                    <h3 style="font-weight: 600; color: #1a1a1a; font-size: 1.3rem; margin-bottom: 2px;">Ruslan Hasanudin, S.Ak.</h3>
                     <p class="text-muted small mt-2">Putra dari Bapak Saripudin<br>& Ibu Epong Nurbaetin</p>
                 </div>
                 <!-- Pembatas & -->
-                <div class="col-md-2 my-4" data-aos="zoom-in" data-aos-delay="400">
-                    <h1 class="romantic-font" style="font-size: 4rem;">&</h1>
+                <div class="col-md-2 my-2" data-aos="zoom-in" data-aos-delay="400">
+                    <h1 class="romantic-font" style="font-size: 3.5rem; color: #c5a880;">&</h1>
                 </div>
                 <!-- Wanita -->
                 <div class="col-md-5" data-aos="fade-left" data-aos-delay="200">
                     <div class="parallax-wrap">
                         <img src="https://lh3.googleusercontent.com/u/0/d/1iNdTKBzkdgmp7VJD64SkSFduQyZWP_Hs" class="parallax-img" id="img-mempelai-wanita" alt="Nuraeni">
                     </div>
-                    <h3 style="font-weight: 600; color: #1a1a1a; font-size: 1.4rem;">Nuraeni, S. M</h3>
+                    <h3 style="font-weight: 600; color: #1a1a1a; font-size: 1.3rem; margin-bottom: 2px;">Nuraeni, S.M.</h3>
                     <p class="text-muted small mt-2">Putri dari Bapak Sirod<br>& Ibu Lilis</p>
                 </div>
             </div>
@@ -316,8 +368,8 @@
     <!-- Section Galeri Foto Tambahan -->
     <section class="section-padding text-center container">
         <div class="glass-panel mx-auto" style="max-width: 950px;" data-aos="fade-up">
-            <h2 class="romantic-font mb-4" style="font-size: 3.5rem;">Galeri Prewedding</h2>
-            <p class="text-muted mb-5">Momen indah kebersamaan kami</p>
+            <h2 class="romantic-font mb-3" style="font-size: 3.5rem;">Galeri Prewedding</h2>
+            <p class="text-muted mb-4 small">Momen indah kebersamaan kami</p>
             
             <div class="row g-3 justify-content-center">
                 <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="100">
@@ -333,129 +385,107 @@
         </div>
     </section>
 
-    <!-- PEMBARUAN PENINGKATAN RESOLUSI VIDEO (FUNGSI STABILISASI KUALITAS HD) -->
+    <!-- PEMBARUAN PENINGKATAN RESOLUSI VIDEO -->
     <section class="section-padding text-center container">
         <div class="glass-panel mx-auto" style="max-width: 850px;" data-aos="fade-up">
-            <h2 class="romantic-font mb-4" style="font-size: 3.5rem;">Kilas Balik Video</h2>
-            <p class="text-muted mb-4">Simak rangkuman momen sinematik kebersamaan hari bahagia kami</p>
+            <h2 class="romantic-font mb-3" style="font-size: 3.5rem;">Kilas Balik Video</h2>
+            <p class="text-muted mb-4 small">Simak rangkuman momen sinematik kebersamaan hari bahagia kami</p>
             <div class="video-container">
-                <!-- Disematkan kode pemaksa render HD 1080p (?vq=hd1080) -->
                 <iframe src="https://drive.google.com/file/d/1v6iq-1AHEBVfsvyEUxOGw3b4AhHLiWld/preview?vq=hd1080" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </section>
 
     <!-- 3. Kisah Cinta -->
-<section class="section-padding container" id="cerita">
-    <div class="glass-panel mx-auto" style="max-width: 950px;" data-aos="fade-up">
-        <div class="text-center mb-5">
-            <h2 class="romantic-font" style="font-size: 3.5rem;">Kisah Cinta Kami</h2>
-            <p class="text-muted">
-                Perjalanan cinta kami bukan tentang siapa yang datang lebih dulu,
-                tetapi tentang bagaimana Tuhan mempertemukan dua hati pada waktu yang tepat.
-            </p>
+    <section class="section-padding container" id="cerita">
+        <div class="glass-panel mx-auto" style="max-width: 950px;" data-aos="fade-up">
+            <div class="text-center mb-5">
+                <h2 class="romantic-font" style="font-size: 3.5rem;">Kisah Cinta Kami</h2>
+                <p class="text-muted small px-2">
+                    Perjalanan cinta kami bukan tentang siapa yang datang lebih dulu,
+                    tetapi tentang bagaimana Tuhan mempertemukan dua hati pada waktu yang tepat.
+                </p>
+            </div>
+
+            <div class="timeline">
+                <!-- 2021 -->
+                <div class="timeline-container left" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <img src="https://lh3.googleusercontent.com/u/0/d/1_BWBy6LvbA44jllcs7bqaLdP3-vrWuSv" class="timeline-gallery-img" alt="Awal Pertemuan">
+                        <h4 class="h6 fw-bold" style="color:#d4af37;">Awal Pertemuan (2021)</h4>
+                        <p class="mb-0 text-muted small">
+                            Tahun ini menjadi awal dari kisah kami. Berawal dari sebuah pertemuan sederhana yang tak pernah kami duga, perlahan menghadirkan rasa nyaman dan kebahagiaan dalam setiap percakapan.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2022 -->
+                <div class="timeline-container right" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <img src="https://lh3.googleusercontent.com/u/0/d/1Zh7V2Ev0oGgPZarbIXVAzyEnmWJHtPrn" class="timeline-gallery-img" alt="Menjalin Komitmen">
+                        <h4 class="h6 fw-bold" style="color:#d4af37;">Menjalin Komitmen (2022)</h4>
+                        <p class="mb-0 text-muted small">
+                            Seiring berjalannya waktu, kami semakin mengenal satu sama lain. Kami memilih untuk saling menjaga, saling mendukung dalam setiap langkah, dan berkomitmen menjalani perjalanan hidup bersama.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2023 -->
+                <div class="timeline-container left" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <img src="https://lh3.googleusercontent.com/u/0/d/1iNdTKBzkdgmp7VJD64SkSFduQyZWP_Hs" class="timeline-gallery-img" alt="Bertumbuh Bersama">
+                        <h4 class="h6 fw-bold" style="color:#d4af37;">Bertumbuh Bersama (2023)</h4>
+                        <p class="mb-0 text-muted small">
+                            Tahun ini menjadi perjalanan yang penuh pelajaran. Kami belajar memahami perbedaan, menguatkan dalam setiap tantangan, dan merayakan setiap kebahagiaan kecil yang membuat cinta kami semakin dewasa.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2024 -->
+                <div class="timeline-container right" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <img src="https://lh3.googleusercontent.com/u/0/d/1Zh7V2Ev0oGgPZarbIXVAzyEnmWJHtPrn" class="timeline-gallery-img" alt="Menyusun Masa Depan">
+                        <h4 class="h6 fw-bold" style="color:#d4af37;">Menyusun Masa Depan (2024)</h4>
+                        <p class="mb-0 text-muted small">
+                            Dengan penuh doa dan keyakinan, kami mulai merencanakan masa depan bersama. Setiap impian, harapan, dan langkah kecil yang kami jalani menjadi bekal menuju kehidupan yang kami cita-citakan berdua.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2025 -->
+                <div class="timeline-container left" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <img src="https://lh3.googleusercontent.com/u/0/d/1iNdTKBzkdgmp7VJD64SkSFduQyZWP_Hs" class="timeline-gallery-img" alt="Lamaran">
+                        <h4 class="h6 fw-bold" style="color:#d4af37;">Ikatan Lamaran (2025)</h4>
+                        <p class="mb-0 text-muted small">
+                            Dengan restu kedua keluarga, kami mengikat janji dalam sebuah prosesi lamaran yang penuh haru. Hari itu menjadi bukti bahwa perjalanan cinta kami telah sampai pada langkah yang lebih serius.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2026 -->
+                <div class="timeline-container right" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <img src="https://lh3.googleusercontent.com/u/0/d/1_BWBy6LvbA44jllcs7bqaLdP3-vrWuSv" class="timeline-gallery-img" alt="Pernikahan">
+                        <h4 class="h6 fw-bold" style="color:#d4af37;">Gerbang Pernikahan (2026)</h4>
+                        <p class="mb-0 text-muted small">
+                            Dengan mengucap syukur kepada Tuhan Yang Maha Esa, kami mengikrarkan janji suci pernikahan. Semoga cinta yang telah tumbuh menjadi awal perjalanan baru yang dipenuhi kasih sayang hingga akhir hayat.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="timeline">
-
-            <!-- 2021 -->
-            <div class="timeline-container left" data-aos="fade-right">
-                <div class="timeline-content">
-                    <img src="https://lh3.googleusercontent.com/u/0/d/1_BWBy6LvbA44jllcs7bqaLdP3-vrWuSv"
-                        class="timeline-gallery-img" alt="Awal Pertemuan">
-                    <h4 class="h6 fw-bold" style="color:#d4af37;">Awal Pertemuan (2021)</h4>
-                    <p class="mb-0 text-muted small">
-                        Tahun ini menjadi awal dari kisah kami. Berawal dari sebuah pertemuan
-                        sederhana yang tak pernah kami duga, perlahan menghadirkan rasa nyaman
-                        dan kebahagiaan dalam setiap percakapan. Dari sinilah cerita indah kami dimulai.
-                    </p>
-                </div>
-            </div>
-
-            <!-- 2022 -->
-            <div class="timeline-container right" data-aos="fade-left">
-                <div class="timeline-content">
-                    <img src="https://lh3.googleusercontent.com/u/0/d/1Zh7V2Ev0oGgPZarbIXVAzyEnmWJHtPrn"
-                        class="timeline-gallery-img" alt="Menjalin Komitmen">
-                    <h4 class="h6 fw-bold" style="color:#d4af37;">Menjalin Komitmen (2022)</h4>
-                    <p class="mb-0 text-muted small">
-                        Seiring berjalannya waktu, kami semakin mengenal satu sama lain.
-                        Kami memilih untuk saling menjaga, saling mendukung dalam setiap
-                        langkah, dan berkomitmen menjalani perjalanan hidup bersama dengan penuh kepercayaan.
-                    </p>
-                </div>
-            </div>
-
-            <!-- 2023 -->
-            <div class="timeline-container left" data-aos="fade-right">
-                <div class="timeline-content">
-                    <img src="https://lh3.googleusercontent.com/u/0/d/1iNdTKBzkdgmp7VJD64SkSFduQyZWP_Hs"
-                        class="timeline-gallery-img" alt="Bertumbuh Bersama">
-                    <h4 class="h6 fw-bold" style="color:#d4af37;">Bertumbuh Bersama (2023)</h4>
-                    <p class="mb-0 text-muted small">
-                        Tahun ini menjadi perjalanan yang penuh pelajaran. Kami belajar
-                        memahami perbedaan, menguatkan dalam setiap tantangan, dan
-                        merayakan setiap kebahagiaan kecil yang membuat cinta kami semakin dewasa.
-                    </p>
-                </div>
-            </div>
-
-            <!-- 2024 -->
-            <div class="timeline-container right" data-aos="fade-left">
-                <div class="timeline-content">
-                    <img src="https://lh3.googleusercontent.com/u/0/d/1Zh7V2Ev0oGgPZarbIXVAzyEnmWJHtPrn"
-                        class="timeline-gallery-img" alt="Menyusun Masa Depan">
-                    <h4 class="h6 fw-bold" style="color:#d4af37;">Menyusun Masa Depan (2024)</h4>
-                    <p class="mb-0 text-muted small">
-                        Dengan penuh doa dan keyakinan, kami mulai merencanakan masa depan
-                        bersama. Setiap impian, harapan, dan langkah kecil yang kami jalani
-                        menjadi bekal menuju kehidupan yang kami cita-citakan berdua.
-                    </p>
-                </div>
-            </div>
-
-            <!-- 2025 -->
-            <div class="timeline-container left" data-aos="fade-right">
-                <div class="timeline-content">
-                    <img src="https://lh3.googleusercontent.com/u/0/d/1iNdTKBzkdgmp7VJD64SkSFduQyZWP_Hs"
-                        class="timeline-gallery-img" alt="Lamaran">
-                    <h4 class="h6 fw-bold" style="color:#d4af37;">Ikatan Lamaran (2025)</h4>
-                    <p class="mb-0 text-muted small">
-                        Dengan restu kedua keluarga, kami mengikat janji dalam sebuah prosesi
-                        lamaran yang penuh haru. Hari itu menjadi bukti bahwa perjalanan cinta
-                        kami telah sampai pada langkah yang lebih serius menuju pernikahan.
-                    </p>
-                </div>
-            </div>
-
-            <!-- 2026 -->
-            <div class="timeline-container right" data-aos="fade-left">
-                <div class="timeline-content">
-                    <img src="https://lh3.googleusercontent.com/u/0/d/1_BWBy6LvbA44jllcs7bqaLdP3-vrWuSv"
-                        class="timeline-gallery-img" alt="Pernikahan">
-                    <h4 class="h6 fw-bold" style="color:#d4af37;">Gerbang Pernikahan (2026)</h4>
-                    <p class="mb-0 text-muted small">
-                        Dengan mengucap syukur kepada Tuhan Yang Maha Esa, kami mengikrarkan
-                        janji suci pernikahan. Semoga cinta yang telah tumbuh selama ini menjadi
-                        awal perjalanan baru yang dipenuhi kasih sayang, keberkahan, dan kebahagiaan
-                        hingga akhir hayat.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-    
     <!-- 4. Detail Acara & Peta -->
     <section class="section-padding text-center container" id="acara">
         <div class="glass-panel mx-auto" style="max-width: 950px;" data-aos="fade-up">
-            <h2 class="romantic-font mb-5" style="font-size: 3.5rem;">Waktu & Tempat Acara</h2>
+            <h2 class="romantic-font mb-4" style="font-size: 3.5rem;">Waktu & Tempat Acara</h2>
             <div class="row g-4 justify-content-center">
                 <div class="col-md-6" data-aos="zoom-in-right" data-aos-duration="1000">
                     <div class="card border-0 shadow-sm p-4 h-100 bg-white">
                         <i class="fas fa-ring fa-3x mb-3" style="color: #c5a880;"></i>
-                        <h4 style="font-weight: 600;">Akad Nikah</h4>
+                        <h4 style="font-weight: 600; font-size: 1.25rem;">Akad Nikah</h4>
                         <p class="mt-2 mb-1"><strong>Minggu, 26 Desember 2026</strong></p>
                         <p class="mb-2">Pukul 08.00 - 10.00 WIB</p>
                         <p class="text-muted small">Rumah Pernikahan<br>Purwakarta, Jawa Barat</p>
@@ -464,7 +494,7 @@
                 <div class="col-md-6" data-aos="zoom-in-left" data-aos-duration="1000">
                     <div class="card border-0 shadow-sm p-4 h-100 bg-white">
                         <i class="fas fa-utensils fa-3x mb-3" style="color: #c5a880;"></i>
-                        <h4 style="font-weight: 600;">Resepsi Pernikahan</h4>
+                        <h4 style="font-weight: 600; font-size: 1.25rem;">Resepsi Pernikahan</h4>
                         <p class="mt-2 mb-1"><strong>Minggu, 26 Desember 2026</strong></p>
                         <p class="mb-2">Pukul 11.00 - selesai</p>
                         <p class="text-muted small">Rumah Pernikahan<br>Purwakarta, Jawa Barat</p>
@@ -474,13 +504,13 @@
 
             <div class="mt-4" data-aos="fade-up">
                 <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Ruslan+%26+Nuraeni&dates=20261226T010000Z/20261226T070000Z&details=Selamat+datang+di+pernikahan+Ruslan+and+Nuraeni.+Mohon+doa+restu+Anda.&location=Klinik+Aqma+Purwakarta,+Jawa+Barat" 
-                   target="_blank" class="btn btn-custom">
+                   target="_blank" class="btn btn-custom btn-sm">
                     <i class="fas fa-calendar-plus me-2"></i>Simpan Tanggal (Add to Calendar)
                 </a>
             </div>
             
             <div class="mt-5 shadow-sm rounded overflow-hidden mx-auto border" style="max-width: 850px;" data-aos="fade-up" id="maps-section">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.6337227003444!2d107.4589209!3d-6.5678434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e690e72bd58cf7b%3A0xe6bf624deee409ef!2sKlinik%20Aqma%20Purwakarta!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" width="100%" height="380" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.6337227003444!2d107.4589209!3d-6.5678434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e690e72bd58cf7b%3A0xe6bf624deee409ef!2sKlinik%20Aqma%20Purwakarta!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
             <div class="mt-4" data-aos="fade-up">
                 <a href="https://maps.app.goo.gl/w8BnHsmBa4orZGGd9?g_st=ac" target="_blank" class="btn btn-custom btn-sm"><i class="fas fa-map-marker-alt me-2"></i>Buka di Aplikasi Google Maps</a>
@@ -491,14 +521,14 @@
     <!-- 5. Fitur Amplop Digital / Wedding Gift -->
     <section class="section-padding text-center container">
         <div class="glass-panel mx-auto" style="max-width: 950px;" data-aos="fade-up">
-            <h2 class="romantic-font mb-4" style="font-size: 3.5rem;">Dompet Digital / Kado Digital</h2>
-            <p class="text-muted mb-5">Doa restu Anda adalah karunia terindah. Namun jika ingin memberikan tanda kasih, Anda dapat mengirimkannya melalui rekening berikut:</p>
+            <h2 class="romantic-font mb-3" style="font-size: 3.5rem;">Dompet Digital / Kado Digital</h2>
+            <p class="text-muted mb-4 small px-2">Doa restu Anda adalah karunia terindah. Namun jika ingin memberikan tanda kasih, Anda dapat mengirimkannya melalui rekening berikut:</p>
             
             <div class="row g-3 justify-content-center" data-aos="fade-up">
                 <div class="col-md-5">
                     <div class="card border-0 shadow-sm p-4 text-center bg-white">
                         <i class="fas fa-credit-card fa-2x mb-2" style="color: #c5a880;"></i>
-                        <h5 style="font-weight:600;">Bank BCA</h5>
+                        <h5 style="font-weight:600; font-size: 1.1rem;">Bank BCA</h5>
                         <p class="mb-1 fw-bold fs-5" id="norek1" style="color: #1a1a1a;">1234567890</p>
                         <p class="small text-muted mb-3">a.n. Ruslan Hasanudin</p>
                         <button class="btn btn-sm btn-outline-secondary rounded-pill" onclick="copyText('norek1')">Salin No. Rekening</button>
@@ -507,7 +537,7 @@
                 <div class="col-md-5">
                     <div class="card border-0 shadow-sm p-4 text-center bg-white">
                         <i class="fas fa-wallet fa-2x mb-2" style="color: #c5a880;"></i>
-                        <h5 style="font-weight:600;">Bank Mandiri</h5>
+                        <h5 style="font-weight:600; font-size: 1.1rem;">Bank Mandiri</h5>
                         <p class="mb-1 fw-bold fs-5" id="norek2" style="color: #1a1a1a;">0987654321</p>
                         <p class="small text-muted mb-3">a.n. Nuraeni</p>
                         <button class="btn btn-sm btn-outline-secondary rounded-pill" onclick="copyText('norek2')">Salin No. Rekening</button>
@@ -520,8 +550,8 @@
     <!-- 6. RSVP Konfirmasi Kehadiran -->
     <section class="section-padding text-center container" style="max-width: 700px;" data-aos="zoom-in" id="rsvp">
         <div class="glass-panel">
-            <h2 class="romantic-font mb-4" style="font-size: 3.5rem;">Konfirmasi Kehadiran</h2>
-            <p class="mb-4 text-muted">Bantu kami mempersiapkan jamuan terbaik dengan mengonfirmasi kehadiran Anda.</p>
+            <h2 class="romantic-font mb-3" style="font-size: 3.5rem;">Konfirmasi Kehadiran</h2>
+            <p class="mb-4 text-muted small">Bantu kami mempersiapkan jamuan terbaik dengan mengonfirmasi kehadiran Anda.</p>
             <form id="rsvp-form">
                 <div class="mb-3">
                     <input type="text" id="guest-name" class="form-control" placeholder="Nama Anda" style="border-radius:8px; padding:12px;" required>
@@ -538,11 +568,11 @@
         </div>
     </section>
 
-    <!-- UCAPAN & DOA RESTU REAL-TIME -->
+<!-- UCAPAN & DOA RESTU REAL-TIME -->
     <section class="section-padding text-center container" style="max-width: 700px;" data-aos="fade-up" id="ucapan">
         <div class="glass-panel">
-            <h2 class="romantic-font mb-4" style="font-size: 3.5rem;">Buku Tamu Digital</h2>
-            <p class="mb-4 text-muted">Tuliskan doa restu & ucapan manis Anda untuk kedua mempelai di bawah ini:</p>
+            <h2 class="romantic-font mb-3" style="font-size: 3.5rem;">Buku Tamu Digital</h2>
+            <p class="mb-4 text-muted small">Tuliskan doa restu & ucapan manis Anda untuk kedua mempelai di bawah ini:</p>
             
             <div class="mb-3">
                 <input type="text" id="wishes-name" class="form-control" placeholder="Nama Anda" style="border-radius:8px; padding:12px;">
@@ -570,7 +600,7 @@
         <p class="mb-0 small">&copy; 2026 Ruslan & Nuraeni. All Rights Reserved.</p>
     </footer>
 
-    <!-- FITUR 3: STICKY NAVIGATION MENU -->
+    <!-- STICKY NAVIGATION MENU -->
     <div class="sticky-nav">
         <a href="#home" class="nav-item-custom"><i class="fas fa-home"></i><span>Home</span></a>
         <a href="#page-ayat" class="nav-item-custom"><i class="fas fa-book-open"></i><span>Ayat</span></a>
@@ -648,7 +678,7 @@
             }, interval);
         }
 
-        // PARALLAX SCROLLING PADA FOTO PROFIL MEMPELAI
+  // PARALLAX SCROLLING PADA FOTO PROFIL MEMPELAI
         window.addEventListener('scroll', function() {
             const speed = 0.08; 
             const imgPria = document.getElementById('img-mempelai-pria');
@@ -684,7 +714,7 @@
         }
 
         const holder = document.getElementById('petals-holder');
-        const petalCount = 25;
+        const petalCount = 20;
         for (let i = 0; i < petalCount; i++) {
             const petal = document.createElement('div');
             petal.className = 'petal';
@@ -761,3 +791,5 @@
     </script>
 </body>
 </html>
+
+

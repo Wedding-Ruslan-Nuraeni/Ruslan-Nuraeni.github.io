@@ -20,6 +20,33 @@
             width: 100%;
             overflow-x: hidden;
         }
+        
+        /* LOCK SCROLL SAAT COVER AKTIF */
+        body.cover-active {
+            overflow: hidden;
+        }
+
+        /* FITUR 1: HALAMAN SAMPUL DEPAN INTERAKTIF (COVER LAYER) */
+        #cover-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://lh3.googleusercontent.com/u/0/d/1Zh7V2Ev0oGgPZarbIXVAzyEnmWJHtPrn') no-repeat center center/cover;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        #cover-layer.hide {
+            transform: translateY(-100vh);
+        }
+
         /* 1. FOTO BACKGROUND UTAMA (MENGGUNAKAN FOTO DRIVE 1 ANDA) */
         body { 
             font-family: 'Montserrat', sans-serif; 
@@ -27,6 +54,7 @@
                         url('https://lh3.googleusercontent.com/u/0/d/1_BWBy6LvbA44jllcs7bqaLdP3-vrWuSv') no-repeat center center fixed;
             background-size: cover;
             color: #2b2b2b; 
+            padding-bottom: 70px; /* Spasi untuk Navigasi Pintar di bawah */
         }
         
         /* 2. FOTO BACKGROUND HALAMAN DEPAN / HERO (MENGGUNAKAN FOTO DRIVE 2 ANDA) */
@@ -44,6 +72,16 @@
         .romantic-font { font-family: 'Great Vibes', cursive; font-size: 4.8rem; color: #d4af37; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
         .section-padding { padding: 90px 0; }
         
+        /* GAYA ARABIK MANDIRI AMAN TANPA GAMBAR PECAH */
+        .arabic-text {
+            font-size: 2.3rem;
+            line-height: 3.8rem;
+            direction: rtl;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-weight: 500;
+            color: #333;
+        }
+
         /* TOMBOL ELEGAN DENGAN EFEK TRANSISI EMAS */
         .btn-custom { background-color: #c5a880; color: white; border: none; padding: 12px 30px; border-radius: 30px; transition: 0.4s ease; text-decoration: none; display: inline-block; font-weight: 500; box-shadow: 0 4px 15px rgba(197, 168, 128, 0.3); }
         .btn-custom:hover { background-color: #d4af37; color: white; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); }
@@ -54,7 +92,7 @@
         .countdown-box span { font-size: 2.2rem; font-weight: 600; display: block; color: #d4af37; }
         
         /* TOMBOL PENGATUR MUSIK ELEGAN */
-        .audio-control { position: fixed; bottom: 20px; right: 20px; z-index: 999; background: #d4af37; color: white; border: none; width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.25); transition: 0.3s; }
+        .audio-control { position: fixed; bottom: 90px; right: 20px; z-index: 999; background: #d4af37; color: white; border: none; width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.25); transition: 0.3s; }
         .audio-control:hover { transform: scale(1.1); }
         
         /* EFEK LAPISAN KACA PREMIUM (GLASSMORPHISM) */
@@ -95,6 +133,55 @@
             100% { transform: translateY(105vh) translateX(100px) rotate(360deg); opacity: 0; }
         }
 
+        /* FITUR 3: TOMBOL NAVIGASI PINTAR (STICKY NAVIGATION MENU) */
+        .sticky-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            z-index: 9999;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+        }
+        .nav-item-custom {
+            color: #c5a880;
+            text-decoration: none;
+            font-size: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-item-custom i {
+            font-size: 1.2rem;
+            margin-bottom: 3px;
+        }
+        .nav-item-custom:hover, .nav-item-custom.active {
+            color: #d4af37;
+        }
+
+        /* FITUR 4: DEKORASI BUKU TAMU DIGITAL */
+        .guestbook-list {
+            max-height: 350px;
+            overflow-y: auto;
+            text-align: left;
+            padding-right: 5px;
+        }
+        .guestbook-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-left: 4px solid #d4af37;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
         @media screen and (max-width: 600px) {
             .timeline::after { left: 31px; }
             .timeline-container { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left; }
@@ -103,11 +190,30 @@
             .left { left: 0%; }
             .left .timeline-content { text-align: left; }
             .romantic-font { font-size: 3.8rem; }
-            .ayat-img { width: 95% !important; }
+            .arabic-text { font-size: 1.6rem; line-height: 2.8rem; }
         }
     </style>
 </head>
-<body>
+<body class="cover-active">
+
+    <!-- FITUR 1 & 2: LAYOUT HALAMAN SAMPUL DEPAN INTERAKTIF & PERSONALIZED NAMA TAMU -->
+    <div id="cover-layer">
+        <div class="container p-4">
+            <h5 class="text-uppercase tracking-wide mb-2" style="letter-spacing: 4px;">Walimatul 'Ursy</h5>
+            <h1 class="romantic-font my-3" style="font-size: 4rem;">Ruslan & Nuraeni</h1>
+            
+            <div class="my-5 glass-panel mx-auto py-3 text-dark" style="max-width: 450px; background: rgba(255,255,255,0.85) !important;">
+                <p class="mb-1 text-muted small">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+                <!-- Target cetak nama kustom dari URL -->
+                <h4 class="fw-bold mb-0" id="guest-target" style="color:#2b2b2b;">Tamu Undangan</h4>
+            </div>
+            
+            <p class="small fst-italic mb-4" style="opacity: 0.85;">*Tanpa Mengurangi Rasa Hormat, Kami Mengundang Anda Hadir</p>
+            <button class="btn btn-custom px-4 py-2 fs-5" onclick="closeCover()">
+                <i class="fas fa-envelope-open me-2"></i>Buka Undangan
+            </button>
+        </div>
+    </div>
 
     <!-- Animasi Kelopak Bunga Lembut -->
     <div class="petals-container" id="petals-holder"></div>
@@ -119,7 +225,7 @@
     <button class="audio-control" onclick="toggleMusic()"><i id="music-icon" class="fas fa-play"></i></button>
 
     <!-- 1. Halaman Utama / Hero -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="container">
             <h5 class="text-uppercase tracking-wide mb-3" data-aos="fade-down" data-aos-duration="1000" style="letter-spacing: 4px;">Walimatul 'Ursy</h5>
             <h1 class="romantic-font my-4" data-aos="zoom-in" data-aos-duration="1500">Ruslan & Nuraeni</h1>
@@ -130,21 +236,20 @@
                 <div class="countdown-box"><span id="minutes">00</span>Menit</div>
                 <div class="countdown-box"><span id="seconds">00</span>Detik</div>
             </div>
-            <button class="btn btn-custom mt-3" onclick="startInvitation()" data-aos="fade-up" data-aos-duration="1600">Buka Undangan</button>
+            <button class="btn btn-custom mt-3" onclick="startInvitation()" data-aos="fade-up" data-aos-duration="1600">Mulai Jelajah</button>
         </div>
     </section>
 
-    <!-- HALAMAN KEDUA: SURAH AR RUM AYAT 21 (DENGAN GAMBAR KALIGRAFI SEBAGAI PENGGANTI TEKS ARAB) -->
+    <!-- HALAMAN KEDUA: SURAH AR RUM AYAT 21 -->
     <section class="section-padding text-center container" id="page-ayat">
         <div class="glass-panel mx-auto p-5" style="max-width: 850px;" data-aos="fade-up" data-aos-duration="1200">
             <i class="fas fa-heart fa-2x mb-4" style="color: #d4af37;"></i>
             <h3 class="fw-bold mb-4" style="font-size: 1.3rem; letter-spacing: 2px; color: #c5a880;">QS. AR-RUM: 21</h3>
             
-            <!-- Menggunakan Gambar Kaligrafi Berwarna Emas Transparan Elegan -->
-            <div class="my-4 px-2 text-center">
-                <img src="https://api.alquran.cloud/v1/surah/30/editions/quran-uthmani" style="display:none;" onerror="this.src='https://images.invitation-template-placeholder.example.com/arrum21.png';">
-                <img src="https://camo.githubusercontent.com/9783f9ccf4bd893a7d1a5c64c126d4ad3d9fbca45b23d9a1fdbdd97d3dfa2896/68747470733a2f2f7777772e616c717572616e2d696e646f6e657369612e636f6d2f617373657474656b732f617961742f33305f32312e706e67" class="img-fluid ayat-img py-2" style="width: 75%; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.15));" alt="Surah Ar-Rum Ayat 21">
-            </div>
+            <!-- Menggunakan Tulisan Kode Arab Aman Bermesin Responsif Lokal HP -->
+            <p class="arabic-text my-4 px-3 text-center">
+                وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لآيَاتٍ لِقَوْمٍ يَتَفَكَّرُونَ
+            </p>
             
             <hr class="mx-auto my-4" style="width: 80px; border-top: 2px solid #d4af37;">
             
@@ -156,7 +261,7 @@
     </section>
 
     <!-- 2. Profil Mempelai -->
-    <section class="section-padding text-center container">
+    <section class="section-padding text-center container" id="mempelai">
         <div class="glass-panel mx-auto" style="max-width: 950px;" data-aos="fade-up" data-aos-duration="1000">
             <h2 class="romantic-font mb-5" style="font-size: 3.5rem;">Mempelai Bersanding</h2>
             <div class="row align-items-center">
@@ -201,7 +306,7 @@
     </section>
 
     <!-- 3. Kisah Cinta (Love Journey Berbentuk Galeri Visual) -->
-    <section class="section-padding container">
+    <section class="section-padding container" id="cerita">
         <div class="glass-panel mx-auto" style="max-width: 950px;" data-aos="fade-up">
             <div class="text-center mb-5">
                 <h2 class="romantic-font" style="font-size: 3.5rem;">Kisah Cinta Kami</h2>
@@ -241,7 +346,7 @@
     </section>
 
     <!-- 4. Detail Acara & Peta -->
-    <section class="section-padding text-center container">
+    <section class="section-padding text-center container" id="acara">
         <div class="glass-panel mx-auto" style="max-width: 950px;" data-aos="fade-up">
             <h2 class="romantic-font mb-5" style="font-size: 3.5rem;">Waktu & Tempat Acara</h2>
             <div class="row g-4 justify-content-center">
@@ -282,13 +387,13 @@
         </div>
     </section>
 
-    <!-- 5. Fitur Amplop Digital / Wedding Gift -->
+      <!-- 5. Fitur Amplop Digital / Wedding Gift -->
     <section class="section-padding text-center container">
         <div class="glass-panel mx-auto" style="max-width: 950px;" data-aos="fade-up">
             <h2 class="romantic-font mb-4" style="font-size: 3.5rem;">Dompet Digital / Kado Digital</h2>
             <p class="text-muted mb-5">Doa restu Anda adalah karunia terindah. Namun jika ingin memberikan tanda kasih, Anda dapat mengirimkannya melalui rekening berikut:</p>
             
-              <div class="row g-3 justify-content-center" data-aos="fade-up">
+            <div class="row g-3 justify-content-center" data-aos="fade-up">
                 <div class="col-md-5">
                     <div class="card border-0 shadow-sm p-4 text-center bg-white">
                         <i class="fas fa-credit-card fa-2x mb-2" style="color: #c5a880;"></i>
@@ -312,7 +417,7 @@
     </section>
 
     <!-- 6. RSVP Konfirmasi Kehadiran -->
-    <section class="section-padding text-center container" style="max-width: 700px;" data-aos="zoom-in">
+    <section class="section-padding text-center container" style="max-width: 700px;" data-aos="zoom-in" id="rsvp">
         <div class="glass-panel">
             <h2 class="romantic-font mb-4" style="font-size: 3.5rem;">Konfirmasi Kehadiran</h2>
             <p class="mb-4 text-muted">Bantu kami mempersiapkan jamuan terbaik dengan mengonfirmasi kehadiran Anda.</p>
@@ -332,10 +437,49 @@
         </div>
     </section>
 
+    <!-- FITUR 4: BUKU TAMU DIGITAL (UCAPAN & DOA RESTU REAL-TIME) -->
+    <section class="section-padding text-center container" style="max-width: 700px;" data-aos="fade-up" id="ucapan">
+        <div class="glass-panel">
+            <h2 class="romantic-font mb-4" style="font-size: 3.5rem;">Buku Tamu Digital</h2>
+            <p class="mb-4 text-muted">Tuliskan doa restu & ucapan manis Anda untuk kedua mempelai di bawah ini:</p>
+            
+            <div class="mb-3">
+                <input type="text" id="wishes-name" class="form-control" placeholder="Nama Anda" style="border-radius:8px; padding:12px;">
+            </div>
+            <div class="mb-3">
+                <textarea id="wishes-text" class="form-control" rows="3" placeholder="Tulis ucapan & doa restu..." style="border-radius:8px; padding:12px;"></textarea>
+            </div>
+            <button type="button" class="btn btn-custom w-100 py-2 mb-4" style="border-radius:8px;" onclick="addWish()">Kirim Ucapan</button>
+
+            <!-- Wadah List Ucapan Tamu -->
+            <div class="guestbook-list" id="wishes-container">
+                <div class="guestbook-card">
+                    <h6 class="fw-bold mb-1" style="color: #c5a880;">Keluarga Besar Budi Santoso</h6>
+                    <p class="small text-muted mb-0">Selamat menempuh hidup baru Ruslan & Nuraeni! Semoga menjadi keluarga yang sakinah, mawadah, dan warahmah. Amin.</p>
+                </div>
+                <div class="guestbook-card">
+                    <h6 class="fw-bold mb-1" style="color: #c5a880;">Siti Rahma</h6>
+                    <p class="small text-muted mb-0">Happy Wedding ya! Lancar terus acaranya sampai hari H, ikut bahagia melihat perjalanan cinta kalian berdua.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-dark text-white-50 text-center py-4">
         <p class="mb-0 small">&copy; 2026 Ruslan & Nuraeni. All Rights Reserved.</p>
     </footer>
+
+    <!-- FITUR 3: LAYOUT TOMBOL NAVIGASI PINTAR (STICKY NAVIGATION MENU) -->
+    <div class="sticky-nav">
+        <a href="#home" class="nav-item-custom"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="#page-ayat" class="nav-item-custom"><i class="fas fa-book-open"></i><span>Ayat</span></a>
+        <a href="#mempelai" class="nav-item-custom"><i class="fas fa-users"></i><span>Mempelai</span></a>
+        <a href="#cerita" class="nav-item-custom"><i class="fas fa-heart"></i><span>Kisah</span></a>
+        <a href="#acara" class="nav-item-custom"><i class="fas fa-calendar-alt"></i><span>Acara</span></a>
+        <a href="#rsvp" class="nav-item-custom"><i class="fas fa-user-check"></i><span>RSVP</span></a>
+        <a href="#ucapan" class="nav-item-custom"><i class="fas fa-comment-dots"></i><span>Ucapan</span></a>
+    </div>
 
     <!-- JavaScript & Pustaka Pendukung -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -343,6 +487,61 @@
         AOS.init({
             once: true
         });
+
+        // FITUR 2: LOGIKA BACA PARAMETER NAMA TAMU DARI URL KUSTOM
+        function checkGuestName() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const guestName = urlParams.get('to');
+            if (guestName) {
+                // Konversi tanda plus (+) atau %20 menjadi spasi normal
+                document.getElementById('guest-target').innerText = decodeURIComponent(guestName);
+                // Sinkronisasi otomatis ke input form RSVP & Buku Tamu
+                document.getElementById('guest-name').value = decodeURIComponent(guestName);
+                document.getElementById('wishes-name').value = decodeURIComponent(guestName);
+            }
+        }
+        // Eksekusi otomatis saat web dimuat
+        window.addEventListener('DOMContentLoaded', checkGuestName);
+
+        // FITUR 1: LOGIKA PENUTUPAN BUKA UNDANGAN (COVER LAYER)
+        function closeCover() {
+            document.getElementById('cover-layer').classList.add('hide');
+            document.body.classList.remove('cover-active');
+            
+            // Putar musik otomatis setelah cover dibuka
+            const music = document.getElementById('bg-music');
+            const icon = document.getElementById('music-icon');
+            music.play().then(() => {
+                icon.className = "fas fa-pause";
+            }).catch(e => {
+                console.log("Autoplay dicegah oleh browser.");
+            });
+        }
+
+        // FITUR 4: LOGIKA TAMBAH UCAPAN BUKU TAMU DIGITAL
+        function addWish() {
+            const nameInput = document.getElementById('wishes-name').value.trim();
+            const textInput = document.getElementById('wishes-text').value.trim();
+            
+            if(!nameInput || !textInput) {
+                alert("Mohon isi nama dan kalimat ucapan Anda terlebih dahulu.");
+                return;
+            }
+
+            const container = document.getElementById('wishes-container');
+            
+            // Buat element kartu ucapan baru
+            const newCard = document.createElement('div');
+            newCard.className = 'guestbook-card';
+            newCard.innerHTML = `<h6 class="fw-bold mb-1" style="color: #c5a880;">${nameInput}</h6><p class="small text-muted mb-0">${textInput}</p>`;
+            
+            // Taruh ucapan baru di urutan paling atas list
+            container.insertBefore(newCard, container.firstChild);
+            
+            // Reset kolom input text saja
+            document.getElementById('wishes-text').value = "";
+            alert("Terima kasih! Ucapan dan doa restu Anda telah tersimpan.");
+        }
 
         // Logika Render Animasi Kelopak Bunga Jatuh secara acak
         const holder = document.getElementById('petals-holder');
@@ -370,13 +569,6 @@
         function startInvitation() {
             const targetPage = document.getElementById('page-ayat');
             targetPage.scrollIntoView({ behavior: 'smooth' });
-            
-            music.play().then(() => {
-                icon.className = "fas fa-pause";
-            }).catch(e => {
-                console.log("Autoplay ditahan browser.");
-                icon.className = "fas fa-play";
-            });
         }
 
         function toggleMusic() {

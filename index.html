@@ -21,6 +21,10 @@
             overflow-x: hidden;
         }
         
+        body {
+            perspective: 1200px; /* Memberikan efek ruang 3D untuk elemen di dalamnya */
+        }
+        
         body.cover-active {
             overflow: hidden;
         }
@@ -39,10 +43,15 @@
             justify-content: center;
             color: white;
             text-align: center;
-            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+            
+            /* EFEK 3D TRANSISI COVER: Melipat ke atas */
+            transform-origin: top center;
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s ease;
         }
         #cover-layer.hide {
-            transform: translateY(-100vh);
+            transform: rotateX(-105deg);
+            opacity: 0;
+            pointer-events: none;
         }
 
         body { 
@@ -110,9 +119,9 @@
         .btn-custom { background-color: #c5a880; color: white; border: none; padding: 12px 30px; border-radius: 30px; transition: 0.4s ease; text-decoration: none; display: inline-block; font-weight: 500; box-shadow: 0 4px 15px rgba(197, 168, 128, 0.3); }
         .btn-custom:hover { background-color: #d4af37; color: white; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); }
         
-        .countdown-box { background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; min-width: 85px; color: #2b2b2b; transition: 0.3s; }
+        .countdown-box { background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; min-width: 85px; color: #2b2b2b; transition: 0.3s; transform-style: preserve-3d; }
         .countdown-box:hover { transform: translateY(-5px); }
-        .countdown-box span { font-size: 2.2rem; font-weight: 600; display: block; color: #d4af37; }
+        .countdown-box span { font-size: 2.2rem; font-weight: 600; display: block; color: #d4af37; transform: translateZ(20px); }
         
         .audio-control { position: fixed; bottom: 90px; right: 20px; z-index: 999; background: #d4af37; color: white; border: none; width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.25); transition: 0.3s; }
         .audio-control:hover { transform: scale(1.1); }
@@ -127,6 +136,7 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
         }
         
+        /* EFEK HOVER FOTO PROFIL 3D */
         .parallax-wrap {
             width: 190px;
             height: 190px;
@@ -136,6 +146,12 @@
             border: 4px solid #d4af37;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15);
             position: relative;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            perspective: 1000px;
+        }
+        .parallax-wrap:hover {
+            transform: rotateY(12deg) rotateX(6deg) scale(1.04);
+            box-shadow: -8px 12px 25px rgba(0,0,0,0.25);
         }
         .parallax-img {
             width: 100%;
@@ -156,20 +172,22 @@
         .right { left: 50%; text-align: left; }
         .left::after { right: -8px; }
         .right::after { left: -8px; }
-        .timeline-content { padding: 20px; background-color: rgba(255, 255, 255, 0.9); position: relative; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+        .timeline-content { padding: 20px; background-color: rgba(255, 255, 255, 0.9); position: relative; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; transform-style: preserve-3d; }
         .timeline-content:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-        .timeline-gallery-img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; border: 2px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .timeline-gallery-img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; border: 2px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transform: translateZ(15px); }
         
         .gallery-img { width: 100%; height: 260px; object-fit: cover; transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
-        .gallery-box { overflow: hidden; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); border: 3px solid rgba(255, 255, 255, 0.8); }
+        .gallery-box { overflow: hidden; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); border: 3px solid rgba(255, 255, 255, 0.8); transform-style: preserve-3d; }
         .gallery-box:hover .gallery-img { transform: scale(1.08); }
 
         .petals-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 99; overflow: hidden; }
-        .petal { position: absolute; background: #f8c8d8; border-radius: 150% 0 150% 150%; opacity: 0.6; animation: floatPetal linear infinite; }
-        @keyframes floatPetal {
-            0% { transform: translateY(-10px) translateX(0) rotate(0deg); opacity: 0.6; }
+        
+        /* ANIMASI KELOPAK BUNGA JATUH DENGAN DISTORSI 3D */
+        .petal { position: absolute; background: #f8c8d8; border-radius: 150% 0 150% 150%; opacity: 0.6; animation: floatPetal3D linear infinite; }
+        @keyframes floatPetal3D {
+            0% { transform: translateY(-20px) translateX(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg); opacity: 0.6; }
             90% { opacity: 0.6; }
-            100% { transform: translateY(105vh) translateX(100px) rotate(360deg); opacity: 0; }
+            100% { transform: translateY(105vh) translateX(120px) rotateX(360deg) rotateY(720deg) rotateZ(360deg); opacity: 0; }
         }
 
         .sticky-nav {
@@ -238,6 +256,12 @@
             border: 0;
         }
 
+        /* ATRIBUT KHUSUS COMPONENT KARTU UNTUK PROPERTI 3D TILT */
+        .tilt-card-3d {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
         /* MEDIA QUERY OPTIMASI TAMPILAN HP */
         @media screen and (max-width: 600px) {
             .timeline::after { left: 31px; }
@@ -259,7 +283,7 @@
 </head>
 <body class="cover-active">
 
-    <!-- PERBAIKAN PADA COVER LAYER -->
+    <!-- PERBAIKAN PADA COVER LAYER (Ditambah Transisi Melipat 3D) -->
     <div id="cover-layer">
         <div class="container p-4">
             <h5 class="text-uppercase tracking-wide mb-2" style="letter-spacing: 4px; font-size: 0.9rem; opacity: 0.9;">Walimatul 'Ursy</h5>
@@ -285,7 +309,7 @@
         </div>
     </div>
 
-    <!-- Animasi Kelopak Bunga Lembut -->
+    <!-- Animasi Kelopak Bunga Lembut 3D -->
     <div class="petals-container" id="petals-holder"></div>
 
     <!-- Musik Latar -->
@@ -309,10 +333,10 @@
 
             <p class="lead mb-4" data-aos="fade-up" data-aos-duration="1200" style="font-weight: 300; font-size: 1rem;">Kami mengundang Anda untuk merayakan kebahagiaan kami</p>
             <div class="d-flex justify-content-center gap-3 my-4" data-aos="fade-up" data-aos-duration="1400">
-                <div class="countdown-box"><span id="days">00</span>Hari</div>
-                <div class="countdown-box"><span id="hours">00</span>Jam</div>
-                <div class="countdown-box"><span id="minutes">00</span>Menit</div>
-                <div class="countdown-box"><span id="seconds">00</span>Detik</div>
+                <div class="countdown-box tilt-card-3d"><span id="days">00</span>Hari</div>
+                <div class="countdown-box tilt-card-3d"><span id="hours">00</span>Jam</div>
+                <div class="countdown-box tilt-card-3d"><span id="minutes">00</span>Menit</div>
+                <div class="countdown-box tilt-card-3d"><span id="seconds">00</span>Detik</div>
             </div>
             <button class="btn btn-custom mt-2" onclick="startInvitation()" data-aos="fade-up" data-aos-duration="1600">Mulai Jelajah</button>
         </div>
@@ -320,17 +344,17 @@
 
     <!-- HALAMAN KEDUA: SURAH AR RUM AYAT 21 -->
     <section class="section-padding text-center container" id="page-ayat">
-        <div class="glass-panel mx-auto p-4 p-md-5" style="max-width: 850px;" data-aos="fade-up" data-aos-duration="1200">
-            <i class="fas fa-heart fa-2x mb-4" style="color: #d4af37;"></i>
-            <h3 class="fw-bold mb-4" style="font-size: 1.1rem; letter-spacing: 2px; color: #c5a880;">QS. AR-RUM: 21</h3>
+        <div class="glass-panel mx-auto p-4 p-md-5 tilt-card-3d" style="max-width: 850px;" data-aos="fade-up" data-aos-duration="1200">
+            <i class="fas fa-heart fa-2x mb-4" style="color: #d4af37; transform: translateZ(25px);"></i>
+            <h3 class="fw-bold mb-4" style="font-size: 1.1rem; letter-spacing: 2px; color: #c5a880; transform: translateZ(20px);">QS. AR-RUM: 21</h3>
             
-            <p class="arabic-text my-4 px-2 text-center">
-                وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
+            <p class="arabic-text my-4 px-2 text-center" style="transform: translateZ(15px);">
+                وَمِنْ اٰيٰtِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنhtmlْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ yَّتَفَكَّرُوْنَ
             </p>
             
             <hr class="mx-auto my-4" style="width: 80px; border-top: 2px solid #d4af37;">
             
-            <p class="fst-italic text-muted px-2 lh-lg small">
+            <p class="fst-italic text-muted px-2 lh-lg small" style="transform: translateZ(10px);">
                 "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu istri-istri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir."
             </p>
         </div>
@@ -373,13 +397,13 @@
             
             <div class="row g-3 justify-content-center">
                 <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="gallery-box"><img src="https://lh3.googleusercontent.com/u/0/d/1_BWBy6LvbA44jllcs7bqaLdP3-vrWuSv" class="gallery-img" alt="Foto 1"></div>
+                    <div class="gallery-box tilt-card-3d"><img src="https://lh3.googleusercontent.com/u/0/d/1_BWBy6LvbA44jllcs7bqaLdP3-vrWuSv" class="gallery-img" alt="Foto 1"></div>
                 </div>
                 <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="gallery-box"><img src="https://lh3.googleusercontent.com/u/0/d/1Zh7V2Ev0oGgPZarbIXVAzyEnmWJHtPrn" class="gallery-img" alt="Foto 2"></div>
+                    <div class="gallery-box tilt-card-3d"><img src="https://lh3.googleusercontent.com/u/0/d/1Zh7V2Ev0oGgPZarbIXVAzyEnmWJHtPrn" class="gallery-img" alt="Foto 2"></div>
                 </div>
                 <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="gallery-box"><img src="https://lh3.googleusercontent.com/u/0/d/1iNdTKBzkdgmp7VJD64SkSFduQyZWP_Hs" class="gallery-img" alt="Foto 3"></div>
+                    <div class="gallery-box tilt-card-3d"><img src="https://lh3.googleusercontent.com/u/0/d/1iNdTKBzkdgmp7VJD64SkSFduQyZWP_Hs" class="gallery-img" alt="Foto 3"></div>
                 </div>
             </div>
         </div>
@@ -410,10 +434,10 @@
             <div class="timeline">
                 <!-- 2021 -->
                 <div class="timeline-container left" data-aos="fade-right">
-                    <div class="timeline-content">
+                    <div class="timeline-content tilt-card-3d">
                         <img src="https://lh3.googleusercontent.com/u/0/d/1_BWBy6LvbA44jllcs7bqaLdP3-vrWuSv" class="timeline-gallery-img" alt="Awal Pertemuan">
-                        <h4 class="h6 fw-bold" style="color:#d4af37;">Awal Pertemuan (2021)</h4>
-                        <p class="mb-0 text-muted small">
+                        <h4 class="h6 fw-bold" style="color:#d4af37; transform: translateZ(10px);">Awal Pertemuan (2021)</h4>
+                        <p class="mb-0 text-muted small" style="transform: translateZ(5px);">
                             Tahun ini menjadi awal dari kisah kami. Berawal dari sebuah pertemuan sederhana yang tak pernah kami duga, perlahan menghadirkan rasa nyaman dan kebahagiaan dalam setiap percakapan.
                         </p>
                     </div>
@@ -421,10 +445,10 @@
 
                 <!-- 2022 -->
                 <div class="timeline-container right" data-aos="fade-left">
-                    <div class="timeline-content">
+                    <div class="timeline-content tilt-card-3d">
                         <img src="https://lh3.googleusercontent.com/u/0/d/1Zh7V2Ev0oGgPZarbIXVAzyEnmWJHtPrn" class="timeline-gallery-img" alt="Menjalin Komitmen">
-                        <h4 class="h6 fw-bold" style="color:#d4af37;">Menjalin Komitmen (2022)</h4>
-                        <p class="mb-0 text-muted small">
+                        <h4 class="h6 fw-bold" style="color:#d4af37; transform: translateZ(10px);">Menjalin Komitmen (2022)</h4>
+                        <p class="mb-0 text-muted small" style="transform: translateZ(5px);">
                             Seiring berjalannya waktu, kami semakin mengenal satu sama lain. Kami memilih untuk saling menjaga, saling mendukung dalam setiap langkah, dan berkomitmen menjalani perjalanan hidup bersama.
                         </p>
                     </div>
@@ -432,10 +456,10 @@
 
                 <!-- 2023 -->
                 <div class="timeline-container left" data-aos="fade-right">
-                    <div class="timeline-content">
+                    <div class="timeline-content tilt-card-3d">
                         <img src="https://lh3.googleusercontent.com/u/0/d/1iNdTKBzkdgmp7VJD64SkSFduQyZWP_Hs" class="timeline-gallery-img" alt="Bertumbuh Bersama">
-                        <h4 class="h6 fw-bold" style="color:#d4af37;">Bertumbuh Bersama (2023)</h4>
-                        <p class="mb-0 text-muted small">
+                        <h4 class="h6 fw-bold" style="color:#d4af37; transform: translateZ(10px);">Bertumbuh Bersama (2023)</h4>
+                        <p class="mb-0 text-muted small" style="transform: translateZ(5px);">
                             Tahun ini menjadi perjalanan yang penuh pelajaran. Kami belajar memahami perbedaan, menguatkan dalam setiap tantangan, dan merayakan setiap kebahagiaan kecil yang membuat cinta kami semakin dewasa.
                         </p>
                     </div>
@@ -443,10 +467,10 @@
 
                 <!-- 2024 -->
                 <div class="timeline-container right" data-aos="fade-left">
-                    <div class="timeline-content">
+                    <div class="timeline-content tilt-card-3d">
                         <img src="https://lh3.googleusercontent.com/u/0/d/1Zh7V2Ev0oGgPZarbIXVAzyEnmWJHtPrn" class="timeline-gallery-img" alt="Menyusun Masa Depan">
-                        <h4 class="h6 fw-bold" style="color:#d4af37;">Menyusun Masa Depan (2024)</h4>
-                        <p class="mb-0 text-muted small">
+                        <h4 class="h6 fw-bold" style="color:#d4af37; transform: translateZ(10px);">Menyusun Masa Depan (2024)</h4>
+                        <p class="mb-0 text-muted small" style="transform: translateZ(5px);">
                             Dengan penuh doa dan keyakinan, kami mulai merencanakan masa depan bersama. Setiap impian, harapan, dan langkah kecil yang kami jalani menjadi bekal menuju kehidupan yang kami cita-citakan berdua.
                         </p>
                     </div>
@@ -454,10 +478,10 @@
 
                 <!-- 2025 -->
                 <div class="timeline-container left" data-aos="fade-right">
-                    <div class="timeline-content">
+                    <div class="timeline-content tilt-card-3d">
                         <img src="https://lh3.googleusercontent.com/u/0/d/1iNdTKBzkdgmp7VJD64SkSFduQyZWP_Hs" class="timeline-gallery-img" alt="Lamaran">
-                        <h4 class="h6 fw-bold" style="color:#d4af37;">Ikatan Lamaran (2025)</h4>
-                        <p class="mb-0 text-muted small">
+                        <h4 class="h6 fw-bold" style="color:#d4af37; transform: translateZ(10px);">Ikatan Lamaran (2025)</h4>
+                        <p class="mb-0 text-muted small" style="transform: translateZ(5px);">
                             Dengan restu kedua keluarga, kami mengikat janji dalam sebuah prosesi lamaran yang penuh haru. Hari itu menjadi bukti bahwa perjalanan cinta kami telah sampai pada langkah yang lebih serius.
                         </p>
                     </div>
@@ -465,10 +489,10 @@
 
                 <!-- 2026 -->
                 <div class="timeline-container right" data-aos="fade-left">
-                    <div class="timeline-content">
+                    <div class="timeline-content tilt-card-3d">
                         <img src="https://lh3.googleusercontent.com/u/0/d/1_BWBy6LvbA44jllcs7bqaLdP3-vrWuSv" class="timeline-gallery-img" alt="Pernikahan">
-                        <h4 class="h6 fw-bold" style="color:#d4af37;">Gerbang Pernikahan (2026)</h4>
-                        <p class="mb-0 text-muted small">
+                        <h4 class="h6 fw-bold" style="color:#d4af37; transform: translateZ(10px);">Gerbang Pernikahan (2026)</h4>
+                        <p class="mb-0 text-muted small" style="transform: translateZ(5px);">
                             Dengan mengucap syukur kepada Tuhan Yang Maha Esa, kami mengikrarkan janji suci pernikahan. Semoga cinta yang telah tumbuh menjadi awal perjalanan baru yang dipenuhi kasih sayang hingga akhir hayat.
                         </p>
                     </div>
@@ -483,21 +507,21 @@
             <h2 class="romantic-font mb-4" style="font-size: 3.5rem;">Waktu & Tempat Acara</h2>
             <div class="row g-4 justify-content-center">
                 <div class="col-md-6" data-aos="zoom-in-right" data-aos-duration="1000">
-                    <div class="card border-0 shadow-sm p-4 h-100 bg-white">
-                        <i class="fas fa-ring fa-3x mb-3" style="color: #c5a880;"></i>
-                        <h4 style="font-weight: 600; font-size: 1.25rem;">Akad Nikah</h4>
-                        <p class="mt-2 mb-1"><strong>Minggu, 26 Desember 2026</strong></p>
-                        <p class="mb-2">Pukul 08.00 - 10.00 WIB</p>
-                        <p class="text-muted small">Rumah Pernikahan<br>Purwakarta, Jawa Barat</p>
+                    <div class="card border-0 shadow-sm p-4 h-100 bg-white tilt-card-3d">
+                        <i class="fas fa-ring fa-3x mb-3" style="color: #c5a880; transform: translateZ(25px);"></i>
+                        <h4 style="font-weight: 600; font-size: 1.25rem; transform: translateZ(20px);">Akad Nikah</h4>
+                        <p class="mt-2 mb-1" style="transform: translateZ(15px);"><strong>Minggu, 26 Desember 2026</strong></p>
+                        <p class="mb-2" style="transform: translateZ(10px);">Pukul 08.00 - 10.00 WIB</p>
+                        <p class="text-muted small" style="transform: translateZ(5px);">Rumah Pernikahan<br>Purwakarta, Jawa Barat</p>
                     </div>
                 </div>
                 <div class="col-md-6" data-aos="zoom-in-left" data-aos-duration="1000">
-                    <div class="card border-0 shadow-sm p-4 h-100 bg-white">
-                        <i class="fas fa-utensils fa-3x mb-3" style="color: #c5a880;"></i>
-                        <h4 style="font-weight: 600; font-size: 1.25rem;">Resepsi Pernikahan</h4>
-                        <p class="mt-2 mb-1"><strong>Minggu, 26 Desember 2026</strong></p>
-                        <p class="mb-2">Pukul 11.00 - selesai</p>
-                        <p class="text-muted small">Rumah Pernikahan<br>Purwakarta, Jawa Barat</p>
+                    <div class="card border-0 shadow-sm p-4 h-100 bg-white tilt-card-3d">
+                        <i class="fas fa-utensils fa-3x mb-3" style="color: #c5a880; transform: translateZ(25px);"></i>
+                        <h4 style="font-weight: 600; font-size: 1.25rem; transform: translateZ(20px);">Resepsi Pernikahan</h4>
+                        <p class="mt-2 mb-1" style="transform: translateZ(15px);"><strong>Minggu, 26 Desember 2026</strong></p>
+                        <p class="mb-2" style="transform: translateZ(10px);">Pukul 11.00 - selesai</p>
+                        <p class="text-muted small" style="transform: translateZ(5px);">Rumah Pernikahan<br>Purwakarta, Jawa Barat</p>
                     </div>
                 </div>
             </div>
@@ -526,19 +550,19 @@
             
             <div class="row g-3 justify-content-center" data-aos="fade-up">
                 <div class="col-md-5">
-                    <div class="card border-0 shadow-sm p-4 text-center bg-white">
-                        <i class="fas fa-credit-card fa-2x mb-2" style="color: #c5a880;"></i>
-                        <h5 style="font-weight:600; font-size: 1.1rem;">Bank BCA</h5>
-                        <p class="mb-1 fw-bold fs-5" id="norek1" style="color: #1a1a1a;">1234567890</p>
+                    <div class="card border-0 shadow-sm p-4 text-center bg-white tilt-card-3d">
+                        <i class="fas fa-credit-card fa-2x mb-2" style="color: #c5a880; transform: translateZ(20px);"></i>
+                        <h5 style="font-weight:600; font-size: 1.1rem; transform: translateZ(15px);">Bank BCA</h5>
+                        <p class="mb-1 fw-bold fs-5" id="norek1" style="color: #1a1a1a; transform: translateZ(10px);">1234567890</p>
                         <p class="small text-muted mb-3">a.n. Ruslan Hasanudin</p>
                         <button class="btn btn-sm btn-outline-secondary rounded-pill" onclick="copyText('norek1')">Salin No. Rekening</button>
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="card border-0 shadow-sm p-4 text-center bg-white">
-                        <i class="fas fa-wallet fa-2x mb-2" style="color: #c5a880;"></i>
-                        <h5 style="font-weight:600; font-size: 1.1rem;">Bank Mandiri</h5>
-                        <p class="mb-1 fw-bold fs-5" id="norek2" style="color: #1a1a1a;">0987654321</p>
+                    <div class="card border-0 shadow-sm p-4 text-center bg-white tilt-card-3d">
+                        <i class="fas fa-wallet fa-2x mb-2" style="color: #c5a880; transform: translateZ(20px);"></i>
+                        <h5 style="font-weight:600; font-size: 1.1rem; transform: translateZ(15px);">Bank Mandiri</h5>
+                        <p class="mb-1 fw-bold fs-5" id="norek2" style="color: #1a1a1a; transform: translateZ(10px);">0987654321</p>
                         <p class="small text-muted mb-3">a.n. Nuraeni</p>
                         <button class="btn btn-sm btn-outline-secondary rounded-pill" onclick="copyText('norek2')">Salin No. Rekening</button>
                     </div>
@@ -549,7 +573,7 @@
 
     <!-- 6. RSVP Konfirmasi Kehadiran -->
     <section class="section-padding text-center container" style="max-width: 700px;" data-aos="zoom-in" id="rsvp">
-        <div class="glass-panel">
+        <div class="glass-panel tilt-card-3d">
             <h2 class="romantic-font mb-3" style="font-size: 3.5rem;">Konfirmasi Kehadiran</h2>
             <p class="mb-4 text-muted small">Bantu kami mempersiapkan jamuan terbaik dengan mengonfirmasi kehadiran Anda.</p>
             <form id="rsvp-form">
@@ -568,7 +592,7 @@
         </div>
     </section>
 
-<!-- UCAPAN & DOA RESTU REAL-TIME -->
+    <!-- UCAPAN & DOA RESTU REAL-TIME -->
     <section class="section-padding text-center container" style="max-width: 700px;" data-aos="fade-up" id="ucapan">
         <div class="glass-panel">
             <h2 class="romantic-font mb-3" style="font-size: 3.5rem;">Buku Tamu Digital</h2>
@@ -613,9 +637,20 @@
 
     <!-- JavaScript & Pustaka Pendukung -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- LIBRARY SCRIPT UTAMA UNTUK EFEK 3D TILT KARTU -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    
     <script>
         AOS.init({
             once: true
+        });
+
+        // Inisialisasi Efek 3D Tilt pada class kartu pilihan
+        VanillaTilt.init(document.querySelectorAll(".tilt-card-3d"), {
+            max: 10,            // Sudut kemiringan maksimal
+            speed: 500,         // Kecepatan respon transisi kembali normal
+            glare: true,        // Efek pantulan cahaya seperti kaca/plastik premium
+            "max-glare": 0.25,   // Kecerahan maksimum kilauan cahaya
         });
 
         const music = document.getElementById('bg-music');
@@ -678,7 +713,7 @@
             }, interval);
         }
 
-  // PARALLAX SCROLLING PADA FOTO PROFIL MEMPELAI
+        // PARALLAX SCROLLING PADA FOTO PROFIL MEMPELAI
         window.addEventListener('scroll', function() {
             const speed = 0.08; 
             const imgPria = document.getElementById('img-mempelai-pria');
@@ -713,18 +748,27 @@
             alert("Terima kasih! Ucapan dan doa restu Anda telah tersimpan.");
         }
 
+        // GENERATOR KELOPAK BUNGA JATUH DENGAN ROTASI DAN KEDALAMAN 3D
         const holder = document.getElementById('petals-holder');
-        const petalCount = 20;
+        const petalCount = 25;
         for (let i = 0; i < petalCount; i++) {
             const petal = document.createElement('div');
             petal.className = 'petal';
             
-            const size = Math.random() * 8 + 8; 
+            const size = Math.random() * 10 + 6; 
             petal.style.width = size + 'px';
             petal.style.height = size + 'px';
             petal.style.left = Math.random() * 100 + 'vw';
             petal.style.animationDelay = Math.random() * 8 + 's';
             petal.style.animationDuration = Math.random() * 6 + 6 + 's';
+            
+            // Efek Distorsi 3D & Blur Acak (Menciptakan depth of field ruang kamera nyata)
+            const randomRotateX = Math.random() * 360;
+            const randomRotateY = Math.random() * 360;
+            const blurEffect = Math.random() > 0.65 ? 'blur(1px)' : 'none';
+            
+            petal.style.transform = `rotateX(${randomRotateX}deg) rotateY(${randomRotateY}deg)`;
+            petal.style.filter = blurEffect;
             
             const colors = ['#f8c8d8', '#f3b0c3', '#ffdde1'];
             petal.style.background = colors[Math.floor(Math.random() * colors.length)];
@@ -791,5 +835,3 @@
     </script>
 </body>
 </html>
-
-
